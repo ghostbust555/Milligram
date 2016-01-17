@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.milligram.milligram.SearchingActivity"
+    tools:showIn="@layout/activity_searching">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:context="com.milligram.milligram.SearchingActivity"
+            tools:showIn="@layout/activity_searching">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/drugNameText"
+                android:enabled="true"
+                android:singleLine="true"
+                android:layout_below="@+id/lookingForView"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:hint="@string/drug_name" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/looking_for"
+                android:id="@+id/lookingForView"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/close_to"
+                android:id="@+id/closeToView"
+                android:layout_below="@+id/drugNameText"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="20dp"
+                android:layout_alignRight="@+id/drugNameText"
+                android:layout_alignEnd="@+id/drugNameText" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/locationText"
+                android:enabled="true"
+                android:singleLine="true"
+                android:hint="@string/city_state_zip"
+                android:layout_below="@+id/closeToView"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignRight="@+id/closeToView"
+                android:layout_alignEnd="@+id/closeToView" />
+
+            <View android:id="@+id/primerdivisor"
+                android:layout_height="1dp"
+                android:layout_width="fill_parent"
+                android:layout_below="@+id/locationText"
+                android:background="@color/colorAccent"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="80dp"
+                android:layout_marginBottom="30dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@android:string/search_go"
+                android:id="@+id/searchButton"
+                android:layout_below="@+id/primerdivisor"
+                android:layout_centerHorizontal="true"
+                android:width="250dp"
+                android:padding="15dp"
+                style="@style/AppTheme.SearchButton"
+                android:enabled="true"
+                android:nestedScrollingEnabled="false"
+                android:onClick="searchSelected"
+                android:minHeight="50dp" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_menu_mylocation"
+                android:id="@+id/locationButton"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignBottom="@+id/locationText"
+                android:layout_alignTop="@+id/locationText"
+                style="@style/AppTheme.LocationButton"
+                android:baselineAlignBottom="false"
+                android:clickable="true"
+                android:nestedScrollingEnabled="false"
+                android:onClick="locationSelected" />
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

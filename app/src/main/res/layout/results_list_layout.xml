@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/drugNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="#000"
+        android:paddingTop="5dp"
+        android:text="Dextroamph-Ampetimin"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/qtyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:text="qty:60"
+        android:layout_below="@+id/drugNameTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/pharmacyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:text="CMC Airport Pharmacy"
+        android:layout_below="@+id/qtyTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/priceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:paddingTop="5dp"
+        android:text="$50"
+        android:gravity="center"
+        android:textColor="@color/priceColor"
+        android:layout_toLeftOf="@+id/imageView"
+        android:layout_toStartOf="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_marginBottom="6dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_keyboard_arrow_right_24dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/pharmacyTextView" />
+</RelativeLayout>
