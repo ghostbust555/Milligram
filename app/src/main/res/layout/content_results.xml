@@ -10,8 +10,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.milligram.milligram.ResultsActivity"
-    tools:showIn="@layout/activity_results">
-
+    tools:showIn="@layout/activity_results"
+    android:id="@+id/listViewParentLayout"
+    >
 
     <ListView
         android:layout_width="wrap_content"

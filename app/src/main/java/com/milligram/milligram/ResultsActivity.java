@@ -13,22 +13,22 @@ import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ViewFlipper;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ResultsActivity extends AppCompatActivity {
-
-    String[] itemname ={
-            "Safari",
-            "Camera",
-            "Global",
-            "FireFox",
-            "UC Browser",
-            "Android Folder",
-            "VLC Player",
-            "Cold War"
-    };
+public class ResultsActivity extends AppCompatActivity implements OnMapReadyCallback {
+    private GoogleMap mMap;
 
     DrugResultList dl = GetDrugResults();
 
@@ -261,8 +261,52 @@ public class ResultsActivity extends AppCompatActivity {
         return DrugResultList.fromJson(json);
     }
 
+    /**
+     * Manipulates the map once available.
+     * This callback is triggered when the map is ready to be used.
+     * This is where we can add markers or lines, add listeners or move the camera. In this case,
+     * we just add a marker near Sydney, Australia.
+     * If Google Play services is not installed on the device, the user will be prompted to install
+     * it inside the SupportMapFragment. This method will only be triggered once the user has
+     * installed Google Play services and returned to the app.
+     */
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        List<DrugResult> results = GetDrugResults().located_drugs;
+
+        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+
+        for (DrugResult res : results) {
+            LatLng loc = new LatLng(res.latitude, res.longitude);
+            builder.include(loc);
+            mMap.addMarker(new MarkerOptions().position(loc).title(res.pharmacy_name));
+        }
+        LatLngBounds bounds = builder.build();
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100));
+    }
+
     public void backPressed(View v){
         finish();
+    }
+
+    public void listSelected(View v){
+        ViewFlipper vf = (ViewFlipper)findViewById(R.id.resultsViewFlipper);
+        vf.setDisplayedChild(0);
+    }
+
+    public void mapSelected(View v){
+        ViewFlipper vf = (ViewFlipper)findViewById(R.id.resultsViewFlipper);
+        //getSupportFragmentManager().beginTransaction().add(R.id.map, new SupportMapFragment(), "map").commit();
+        vf.setDisplayedChild(1);
+        try {
+            Thread.sleep(100L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        if(mapFragment != null) mapFragment.getMapAsync(this);
     }
 
     @Override
