@@ -32,7 +32,10 @@
                     android:id="@+id/vouchersToolbarButton"
                     style="@style/AppTheme.NavButton"
                     android:enabled="true"
-                    android:layout_margin="10dp" />
+                    android:layout_margin="10dp"
+                    android:clickable="true"
+                    android:onClick="viewSavedVouchers"
+                    android:padding="10dp" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -52,7 +55,9 @@
                     android:id="@+id/searchToolbarButton"
                     style="@style/AppTheme.NavButton"
                     android:enabled="true"
-                    android:layout_margin="10dp" />
+                    android:layout_margin="10dp"
+                    android:clickable="true"
+                    android:onClick="searchSelected" />
             </LinearLayout>
         </android.support.v7.widget.Toolbar>
 

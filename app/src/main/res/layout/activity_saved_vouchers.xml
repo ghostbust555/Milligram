@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.milligram.milligram.ResultsActivity">
+    tools:context="com.milligram.milligram.SavedVouchersActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -27,21 +27,18 @@
 
                 <Button
                     android:layout_width="wrap_content"
-                    android:id="@+id/backToolbarButton"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_keyboard_arrow_left_24dp"
-                    style="@style/ResultsTheme.BackButton"
-                    android:text="@string/back"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="left|center_vertical"
-                    android:onClick="backPressed"
-                    android:clickable="true"
-                    tools:ignore="RtlHardcoded" />
+                    android:text="@string/done"
+                    style="@style/AppTheme.NavButton"
+                    android:enabled="false"
+                    android:visibility="invisible"/>
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="@string/results"
+                    android:text="@string/saved_vouchers"
+                    android:gravity="center"
                     android:textAlignment="center"
                     android:id="@+id/searchToolbarTextView"
                     android:enabled="true"
@@ -51,11 +48,11 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/refine"
+                    android:text="@string/done"
                     android:id="@+id/searchToolbarButton"
                     style="@style/AppTheme.NavButton"
                     android:enabled="true"
-                    android:onClick="refinePressed"
+                    android:onClick="donePressed"
                     android:clickable="true" />
             </LinearLayout>
         </android.support.v7.widget.Toolbar>
@@ -76,12 +73,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" >
 
-            <include android:id="@+id/listResultsView" layout="@layout/content_results" />
-            <fragment
-                android:id="@+id/map"
-                android:name="com.google.android.gms.maps.SupportMapFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+            <include android:id="@+id/listResultsView" layout="@layout/content_saved_vouchers_empty" />
+            <include android:id="@+id/listResultsView" layout="@layout/content_saved_vouchers" />
 
             <!--<include android:id="@+id/mapResultsView" layout="@layout/activity_maps" />-->
 

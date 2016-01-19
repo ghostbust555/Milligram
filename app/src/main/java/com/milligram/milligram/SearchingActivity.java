@@ -56,11 +56,16 @@ public class SearchingActivity extends AppCompatActivity implements GoogleApiCli
         startActivity(intent);
     }
 
+    public void viewSavedVouchers(View v){
+        Intent intent = new Intent(this, SavedVouchersActivity.class);
+        startActivity(intent);
+    }
+
     public void locationSelected(View v) {
-//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//            //TODO: Add dialog for lack of permissions
-//            return;
-//        }
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            //TODO: Add dialog for lack of permissions
+            return;
+        }
 
         LocationManager mLocManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
         android.location.LocationListener mLocListener = new android.location.LocationListener() {

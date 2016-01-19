@@ -1,18 +1,9 @@
 package com.milligram.milligram;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ViewFlipper;
 
@@ -22,13 +13,11 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class ResultsActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class SavedVouchersActivity extends AppCompatActivity {
     private GoogleMap mMap;
 
     DrugResultList dl = GetDrugResults();
@@ -262,30 +251,9 @@ public class ResultsActivity extends AppCompatActivity implements OnMapReadyCall
         return DrugResultList.fromJson(json);
     }
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-        List<DrugResult> results = GetDrugResults().located_drugs;
 
-        LatLngBounds.Builder builder = new LatLngBounds.Builder();
-
-        for (DrugResult res : results) {
-            LatLng loc = new LatLng(res.latitude, res.longitude);
-            builder.include(loc);
-            mMap.addMarker(new MarkerOptions().position(loc).title(res.pharmacy_name));
-        }
-        LatLngBounds bounds = builder.build();
-
-        mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 150));
-    }
-
-    public void backPressed(View v){
+    public void donePressed(View v){
         finish();
-    }
-
-    public void refinePressed(View v){
-        Intent intent = new Intent(this, RefineSearchActivity.class);
-        startActivity(intent);
     }
 
     public void listSelected(View v){
@@ -295,27 +263,19 @@ public class ResultsActivity extends AppCompatActivity implements OnMapReadyCall
 
     public void mapSelected(View v){
         ViewFlipper vf = (ViewFlipper)findViewById(R.id.resultsViewFlipper);
-        //getSupportFragmentManager().beginTransaction().add(R.id.map, new SupportMapFragment(), "map").commit();
         vf.setDisplayedChild(1);
-        try {
-            Thread.sleep(100L);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        if(mapFragment != null) mapFragment.getMapAsync(this);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_results);
+        setContentView(R.layout.activity_saved_vouchers);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setContentInsetsAbsolute(0, 0);
         setSupportActionBar(toolbar);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        ListView resultsView = (ListView) findViewById(R.id.resultsView);
+        ListView resultsView = (ListView) findViewById(R.id.savedVouchersListView);
         resultsView.setAdapter(new DrugResultListAdapter(this, R.layout.results_list_layout, dl.located_drugs));
 
         //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_back);

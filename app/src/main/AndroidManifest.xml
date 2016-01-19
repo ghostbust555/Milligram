@@ -31,6 +31,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.milligram.milligram.SearchingActivity" />
         </activity>
+        <activity
+            android:name=".SavedVouchersActivity"
+            android:label="@string/saved_vouchers"
+            android:parentActivityName=".SearchingActivity"
+            android:theme="@style/ResultsTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.milligram.milligram.SearchingActivity" />
+        </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -43,6 +52,15 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <activity
+            android:name=".RefineSearchActivity"
+            android:label="@string/title_activity_refine_search"
+            android:parentActivityName=".ResultsActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.milligram.milligram.ResultsActivity" />
+        </activity>
     </application>
 
 </manifest>

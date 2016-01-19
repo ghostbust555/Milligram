@@ -16,6 +16,12 @@
         <item name="android:background">@drawable/location_button</item>
     </style>
 
+    <style name="AppTheme.RadioButton">
+        <item name="android:textColor">@color/colorPrimaryLight</item>
+        <item name="android:drawableBottom">@drawable/radio_button</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+    </style>
+
     <style name="AppTheme.SearchButton">
         <item name="android:textColor">@color/colorPrimaryLight</item>
         <item name="android:layout_margin">2dp</item>
@@ -27,7 +33,9 @@
         <item name="android:textColor">@color/colorNav</item>
         <item name="android:layout_margin">10dp</item>
         <item name="android:background">@drawable/nav_button</item>
-        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+        <item name="android:minWidth">60dp</item>
+        <item name="android:padding">10dp</item>
     </style>
 
     <style name="ResultsTheme" parent="Theme.AppCompat.Light.DarkActionBar">

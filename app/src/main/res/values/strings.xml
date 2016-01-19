@@ -18,4 +18,14 @@
         AIzaSyB-7p5F-Fz_fD8LPj0rxOh-A1hBAFdHOxU
     </string>
     <string name="google_app_id">123456789012</string>
+    <string name="noSavedVouchers">you have no saved vouchers</string>
+    <string name="saved_vouchers">Saved Vouchers</string>
+    <string name="done">Done</string>
+    <string name="title_activity_refine_search">RefineSearchActivity</string>
+    <string name="strength">Strength</string>
+    <string name="quantity">Quantity</string>
+    <string name="form">Form</string>
+    <string name="either">Either</string>
+    <string name="name_brand">Name Brand</string>
+    <string name="generic">Generic</string>
 </resources>
